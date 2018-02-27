@@ -1,5 +1,6 @@
 import java.awt.Dimension; 
 import javax.swing.JFrame;
+/*Si tu éxecutes ce code dans la situation actuelle, tu auras une surprise : un système de trois planètes avec un soleil au centre!*/
  
 public class Graphicfenetre extends JFrame{
 	int n = 3;
@@ -20,12 +21,13 @@ public class Graphicfenetre extends JFrame{
 
   private void go(){
 	  Test test = new Test();
-	  double[][][] trajectoire = test.defaultTest();
+	  double[][][] trajectoire = test.defaultTest(); /*on récupère le tableau des positions calculé par Test*/
 	  for(int t = 0; t < 20000; t++){
 		  for (int i = 0; i<n; i++) {
+			 /*pour chaque i, on place le cercle i à la position donnée par trajectoire*/
 			 pan.setPosX((int) trajectoire[t][i][0], i);
 			 pan.setPosY((int) trajectoire[t][i][1], i);
-			 pan.repaint();
+			 
 			 try {
 			     Thread.sleep(1);
 			 } catch (InterruptedException e) {
@@ -33,6 +35,8 @@ public class Graphicfenetre extends JFrame{
 			 }
 			 
 		  }
+		  /*on modifie la fenêtre avec les nouvelles positions*/
+		  pan.repaint();
 	  }
   }
   
